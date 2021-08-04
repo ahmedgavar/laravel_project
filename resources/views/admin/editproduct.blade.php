@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-Add Product
+Edit Product
     
 @endsection
 @section('content')
@@ -9,48 +9,30 @@ Add Product
         <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-            <h4 class="card-title">Add Product  </h4>
-            @if (Session::has('status'))
-                <div class="alert alert-success">
-
-                {{Session::get('status')}}
-
-                </div>
+            <h4 class="card-title">Edit Product  </h4>
             
-            @endif
 
-            {{-- check if element  in database --}}
-
-            @if(Session::has('status1'))
-                <div class="alert alert-danger">
-
-                    {{Session::get('status1')}}
-    
-                </div>
-
-            
-                
-            @endif
-
-                {!!Form::open(['action'=>'ProductController@saveproduct','class'=>'cmxform','method'=>'POST','id'=>'commentForm','enctype'=>'multipart/form-data'])!!}
+                {!!Form::open(['action'=>'ProductController@updateproduct','class'=>'cmxform','method'=>'POST','id'=>'commentForm','enctype'=>'multipart/form-data'])!!}
                     {{ csrf_field()}}
 
                 <div class="form-group">
+                    {{Form::hidden('id',$product->id)}}
                     {{Form::label('','product Name',['for'=>'cname'])}}
-                    {{Form::text('product_name','',['class'=>'form-control','','minlength'=>'2'])}}
+                    {{Form::text('product_name',$product->product_name,['class'=>'form-control','','minlength'=>'2'])}}
                 </div>
 
                 <div class="form-group">
 
                     {{Form::label('','Product Price',['for'=>'cname'])}}
-                    {{Form::number('product_price','',['class'=>'form-control'])}}
+                    {{Form::number('product_price',$product->product_price,['class'=>'form-control'])}}
                  </div>
                  <div class="form-group">
 
                     {{Form::label('','Product Category',['for'=>'cname'])}}
 
-                     {{Form::select('product_category',$categories,null,['placeholder' => 'select category'],['class'=>'form-control'])}}
+                     {{Form::select('product_category',$categories,$product->product_category,['placeholder' => 'select product'],['class'=>'form-control'])}}
 
+                 </div>
                 <div class="form-group">
 
                         {{Form::file('product_image',['class'=>'form-control'])}}
@@ -58,11 +40,11 @@ Add Product
                 <div class="form-group">
                     {{Form::label('','Product Status',['for'=>'cname'])}}
 
-                        {{Form::checkbox('product_status','','true',['class'=>'form-control'])}}
+                        {{Form::checkbox('product_status',$product->product_status,'true',['class'=>'form-control'])}}
 
 
                 </div>
-                {{form::submit('save',['class'=>'btn btn-primary'])}}
+                {{form::submit('Update',['class'=>'btn btn-primary'])}}
                 {!!Form::close() !!}
                 
                 

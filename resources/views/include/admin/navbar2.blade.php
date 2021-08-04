@@ -4,7 +4,7 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{URL::to('/admin')}}">
             <i class="ti-home menu-icon"></i>
             <span class="menu-title">Dashboard</span>
           </a>
@@ -19,8 +19,7 @@
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"><a class="nav-link" href="{{URL::to('/addcategory')}}">Add Category</a></li>
               <li class="nav-item"><a class="nav-link" href="{{URl::to('/addproduct')}}">Add Product</a></li>
-              <li class="nav-item"><a class="nav-link" href="validation.html">Add Slider</a></li>
-              <li class="nav-item"><a class="nav-link" href="wizard.html">Wizard</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{URL::to('/addslider')}}">Add Slider</a></li>
             </ul>
           </div>
         </li>
@@ -32,10 +31,11 @@
           </a>
           <div class="collapse" id="tables">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="basic-table.html">Categories </a></li>
-              <li class="nav-item"> <a class="nav-link" href="data-table.html"> Products</a></li>
-              <li class="nav-item"> <a class="nav-link" href="js-grid.html">Sliders</a></li>
-              <li class="nav-item"> <a class="nav-link" href="sortable-table.html">Orders </a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('/products')}}">Products  </a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('/categories')}}"> Categories</a></li>
+
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('/sliders')}}">Sliders</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('/orders')}}">Orders </a></li>
             </ul>
           </div>
         </li>

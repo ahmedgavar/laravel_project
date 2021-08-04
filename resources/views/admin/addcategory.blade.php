@@ -6,17 +6,42 @@
         <div class="card">
             <div class="card-body">
             <h4 class="card-title">  Add Category</h4>
-                {!!Form::open(['action'=>'AdminController@addcategory','class'=>'cmxform','method'=>'POST','id'=>'commentForm'])!!}
+
+            {{-- check if element not in database --}}
+
+
+            @if (Session::has('status')){
+                <div class="alert alert-success">
+
+                {{Session::get('status')}}
+
+                </div>
+            }
+            @endif
+
+            {{-- check if element  in database --}}
+
+            @if(Session::has('status1')){
+                <div class="alert alert-danger">
+
+                    {{Session::get('status1')}}
+    
+                </div>
+
+            }
+                
+            @endif
+
+                {!!Form::open(['action'=>'CategoryController@savecategory','class'=>'cmxform','method'=>'POST','id'=>'commentForm'])!!}
                     {{ csrf_field()}}
 
                 <div class="form-group">
-                    <label for="cname">Name (required, at least 2 characters)</label>
-                    <input id="cname" class="form-control" name="name" minlength="2" type="text" required>
+                    <label for="cname">Name (required, at least 2 characters)</label><br><br>
                     {{Form::label('','product category',['for'=>'cname'])}}
-                    {{Form::text('category_name','',['class'=>'form-control','minlength'=>'2'])}}
+                    {{Form::text('category_name','',['class'=>'form-control','','minlength'=>'2'])}}
                 </div>
                 {{form::submit('save',['class'=>'btn btn-primary'])}}
-                {{!!Form::close() !!}}
+                {!!Form::close() !!}
                 
                 
             </div>
@@ -26,4 +51,9 @@
     
 @endsection
 
+@section('scripts')
 
+<script src="{{asset('backend/js/bt-maxLength.js')}}"></script>
+
+    
+@endsection

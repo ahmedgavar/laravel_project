@@ -12,12 +12,13 @@ class AdminController extends Controller
         return view('admin.dashboard');
 
     }
-    public function addcategory(){
-        return view('admin.addcategory');
+    
+    
+    
+    public function showorders(){
+        return view('admin.orders');
 
     }
-    public function addproduct(){
-        return view('admin.addproduct');
+    
 
-    }
 }
